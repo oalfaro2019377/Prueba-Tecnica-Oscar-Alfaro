@@ -1,0 +1,87 @@
+﻿@model IEnumerable<OscarAlfaroPruebaTecnica.Models.Producto>
+<!--Importacion de la herramienta Rotativa para realizar el reporte de los productos-->
+@using Rotativa.AspNetCore
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/styles.css" />
+</head>
+
+<h1>Reporte de Productos</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Código
+            </th>
+            <th>
+                Descripción
+            </th>
+            <th>
+                Precio
+            </th>
+            <th>
+                IVA
+            </th>
+            <th>
+                Unidades
+            </th>
+            <th>
+                Peso
+            </th>
+            <th>
+                Marca
+            </th>
+            <th>
+                Proveedor
+            </th>
+            <th>
+                Presentación
+            </th>
+            <th>
+                Zona
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Codigo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DescripcionProducto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Precio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Iva)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stock)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Peso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdMarcaNavigation.DescripcionMarca)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdProveedorNavigation.DescripcionProveedor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdPresentacionNavigation.DescripcionPresentacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdZonaNavigation.DescripcionZona)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

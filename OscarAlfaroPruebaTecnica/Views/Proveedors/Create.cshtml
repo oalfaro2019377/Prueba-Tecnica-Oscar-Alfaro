@@ -1,0 +1,36 @@
+﻿@model OscarAlfaroPruebaTecnica.Models.Proveedor
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Crear Nuevo Proveedor</h1>
+
+<h4>Ingresa un nombre o descripción para el nuevo proveedor</h4>
+<hr />
+<div class="grid-container">
+    <div class="grid-item">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DescripcionProveedor" class="control-label">Descripción</label>
+                <input asp-for="DescripcionProveedor" class="form-control" />
+                <span asp-validation-for="DescripcionProveedor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <br />
+    <a class="btn btn-secondary" asp-action="Index">Regresar</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

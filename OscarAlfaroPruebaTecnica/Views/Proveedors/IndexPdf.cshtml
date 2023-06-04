@@ -1,0 +1,33 @@
+﻿@model IEnumerable<OscarAlfaroPruebaTecnica.Models.Proveedor>
+
+<!--Importacion de la herramienta Rotativa para realizar el reporte de los proveedores-->
+@using Rotativa.AspNetCore
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/styles.css" />
+</head>a
+
+<h1>Reporte de Proveedores</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Descripción
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescripcionProveedor)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

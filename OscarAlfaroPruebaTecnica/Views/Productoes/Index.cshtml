@@ -1,0 +1,96 @@
+﻿@model IEnumerable<OscarAlfaroPruebaTecnica.Models.Producto>
+@using Rotativa.AspNetCore
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Productos</h1>
+
+<!--Botones para crear proveedores y ver un reporte general de todos los productos-->
+<p>
+    <a class="btn btn-primary" asp-action="Create">Crear Nuevo Producto</a>
+</p><p>
+    <a class="btn btn-secondary" asp-action="IndexPDF">Reporte de Productos</a>
+</p>
+<!--Lista de todos los productos creados en la Base de Datos-->
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Código
+            </th>
+            <th>
+                Descripción
+            </th>
+            <th>
+                Precio
+            </th>
+            <th>
+                IVA
+            </th>
+            <th>
+                Unidades
+            </th>
+            <th>
+                Peso
+            </th>
+            <th>
+                Marca
+            </th>
+            <th>
+                Proveedor
+            </th>
+            <th>
+                Presentación
+            </th>
+            <th>
+                Zona
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescripcionProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Iva)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Peso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdMarcaNavigation.DescripcionMarca)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.IdProveedorNavigation.DescripcionProveedor)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.IdPresentacionNavigation.DescripcionPresentacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdZonaNavigation.DescripcionZona)
+            </td>
+            <td>
+                <!--Botones para ver reporte de cada producto, editarlo o eliminarlo-->
+                <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.IdProducto">Reporte</a>
+                <br>
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.IdProducto">Editar</a>
+                <br>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.IdProducto">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

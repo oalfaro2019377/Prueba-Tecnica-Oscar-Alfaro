@@ -1,0 +1,41 @@
+﻿@model IEnumerable<OscarAlfaroPruebaTecnica.Models.Proveedor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Proveedores</h1>
+
+<p>
+    <!--Botones para crear proveedores y ver un reporte general de todos los proveedores-->
+    <a class="btn btn-primary" asp-action="Create">Crear Nuevo Proveedor</a>
+</p>
+<p>
+    <a class="btn btn-secondary" asp-action="IndexPDF">Reporte de Proveedores</a>
+</p>
+<!--Lista de todos los proveedores creados en la Base de Datos-->
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Descripción
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescripcionProveedor)
+            </td>
+                <td>
+                    <!--Botones para ver reporte de cada proveedor, editarlo o eliminarlo-->
+                    <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.IdProveedor">Reporte</a> |
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.IdProveedor">Editar</a> |
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.IdProveedor">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
